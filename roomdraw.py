@@ -21,15 +21,25 @@ class Room(db.Model):
         self.hall = hall
         self.room_number = room_number
         self.draw_number = draw_number
-        self.year
+        self.year = year
 
     def __repr__(self):
         return '<Room: %r hall>' % (self.hall)
 
 
-@app.route('/')
-def hello():
-    return render_template('index.html')
+def getData(dorm, year):
+    results = Room.query.filter_by(hall=dorm[:4].upper(), year=year).all()
+    data = [{
+        draw_number: room.draw_number,
+        room_number: room.room_number
+    } for room in results]
+    return data
+
+
+@app.route('/<dorm>')
+def hello(dorm):
+    data = getData(dorm, 2003)
+    return render_template('index.html', data=data)
 
 if __name__ == "__main__":
     app.debug = True

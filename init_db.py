@@ -8,11 +8,12 @@ db.create_all()
 
 for l in lines:
     room, term, draw = l.split(',')
-    hall = room.split()[0]
-    room_number = room.split()[1]
-    draw_number = int(draw)
-    year = int(term[:2]) + 2000
-    x = Room(hall, room_number, draw_number, year)
-    db.session.add(x)
+    if draw:  # Davis 007
+        hall = room.split()[0]
+        room_number = room.split()[1]
+        draw_number = int(draw)
+        year = int(term[:2]) + 2000
+        x = Room(hall, room_number, draw_number, year)
+        db.session.add(x)
 
 db.session.commit()

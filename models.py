@@ -15,7 +15,7 @@ class Room(Base):
         self.hall = hall
         self.draw_number = draw_number
         self.room_number = room_number
-        self.year
+        self.year = year
 
     def __repr__(self):
         return '<Room: %r hall>' % (self.hall)
