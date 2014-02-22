@@ -7,20 +7,28 @@
 {% endblock %}
 
 {% block content %}
- 
-<label for="dorm_name">Select Dorm</label>
-<select id="dorm_name">
-    <option value="Burton">
-        Burton
-    </option>
-    <option value="Sevy">
-        Sevy
-    </option>
-</select>
-<a id="goto" href="/">Go!</a>
+<div class="full-content">
+    <label for="dorm_name">Select Dorm</label>
+    <select id="dorm_name">
+        <option value="Burton">
+            Burton
+        </option>
+        <option value="Sevy">
+            Sevy
+        </option>
+        <option value="Watson">
+            Watson
+        </option>
+    </select>
+    <a id="goto" href="/">Go!</a>
+</div>
 
 <script type="text/javascript">
 $("#dorm_name").change(function() {
+    var dorm = $("#dorm_name").val();
+    $("#goto").attr("href", "/" + dorm);
+});
+$(document).ready(function(){
     var dorm = $("#dorm_name").val();
     $("#goto").attr("href", "/" + dorm);
 });
