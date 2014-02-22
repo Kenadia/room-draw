@@ -36,16 +36,16 @@ def getData(dorm, year):
     return data
 
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
 @app.route('/<dorm>')
-def hello(dorm):
+def histoDorm(dorm):
     data = getData(dorm, 2003)
-    return render_template('index.html', data=data)
+    return render_template('dorm.html', data=data)
 
-
-@app.route('/<asdf>')
-def yolo(asdf):
-    print asdf
-    return 'index.html'
 
 if __name__ == "__main__":
     app.debug = True
