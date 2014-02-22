@@ -31,6 +31,12 @@ class Room(db.Model):
 def hello():
     return render_template('index.html')
 
+
+@app.route('/<asdf>')
+def yolo(asdf):
+    print asdf
+    return 'index.html'
+
 if __name__ == "__main__":
     app.debug = True
     app.run()
