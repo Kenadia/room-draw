@@ -27,11 +27,29 @@ class Room(db.Model):
         return '<Room: %r hall>' % (self.hall)
 
 
+def init_db():
+    data = open("data.csv").read()
+    lines = data.split("\r\n")[1:]
+    db.create_all()
+    for l in lines:
+        room, term, draw = l.split(',')
+        if draw:  # Davis 007
+            hall = room.split()[0]
+            room_number = room.split()[1]
+            draw_number = int(draw)
+            year = int(term[:2]) + 2000
+            x = Room(hall, room_number, draw_number, year)
+            db.session.add(x)
+
+    db.session.commit()
+
+
 def getData(dorm, year):
+    init_db()
     results = Room.query.filter_by(hall=dorm[:4].upper(), year=year).all()
     data = [{
-        draw_number: room.draw_number,
-        room_number: room.room_number
+        'draw_number': room.draw_number,
+        'room_number': room.room_number
     } for room in results]
     return data
 

@@ -7,22 +7,21 @@
 {% endblock %}
 
 {% block content %}
-
-<label for="dorm-name">Select Dorm</label>
-<select id="dorm-name">
-    <option value="12">
-        12 Hour (9AM-9PM)
+ 
+<label for="dorm_name">Select Dorm</label>
+<select id="dorm_name">
+    <option value="Burton">
+        Burton
     </option>
-    <option value="4">
-        4 Hour (5PM-9PM)
+    <option value="Sevy">
+        Sevy
     </option>
 </select>
 <a id="goto" href="/">Go!</a>
 
 <script type="text/javascript">
-$("#dorm-name").change(function() {
-    alert('asdf');
-    var dorm = $("#dorm-name").val();
+$("#dorm_name").change(function() {
+    var dorm = $("#dorm_name").val();
     $("#goto").attr("href", "/" + dorm);
 });
 </script>
