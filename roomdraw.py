@@ -1,11 +1,10 @@
 import os
 from flask import Flask
+from flask import render_template
 from flask.ext.sqlalchemy import SQLAlchemy
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
-# ...
 
 
-app = Flask(__name__)
 app = Flask(__name__, template_folder=tmpl_dir)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'
 db = SQLAlchemy(app)
@@ -32,6 +31,6 @@ class Room(db.Model):
 def hello():
     return render_template('index.html')
 
-
 if __name__ == "__main__":
+    app.debug = True
     app.run()
