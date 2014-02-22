@@ -2,12 +2,17 @@ import os
 from flask import Flask
 from flask import render_template
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.script import Manager
+from flask.ext.migrate import Migrate, MigrateCommand
+
+
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
-
-
 app = Flask(__name__, template_folder=tmpl_dir)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///roomdraw.db'
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
 
 
 class Room(db.Model):
@@ -27,25 +32,7 @@ class Room(db.Model):
         return '<Room: %r hall>' % (self.hall)
 
 
-def init_db():
-    data = open("data.csv").read()
-    lines = data.split("\r\n")[1:]
-    db.create_all()
-    for l in lines:
-        room, term, draw = l.split(',')
-        if draw:  # Davis 007
-            hall = room.split()[0]
-            room_number = room.split()[1]
-            draw_number = int(draw)
-            year = int(term[:2]) + 2000
-            x = Room(hall, room_number, draw_number, year)
-            db.session.add(x)
-
-    db.session.commit()
-
-
 def getData(dorm, year):
-    init_db()
     results = Room.query.filter_by(hall=dorm[:4].upper(), year=year).all()
     data = [{
         'draw_number': room.draw_number,
@@ -67,4 +54,4 @@ def histoDorm(dorm):
 
 if __name__ == "__main__":
     app.debug = True
-    app.run()
+    manager.run()
