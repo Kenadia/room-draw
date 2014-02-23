@@ -8,28 +8,139 @@
 
 {% block content %}
 <div class="full-content">
-    <label for="dorm_name">Select Dorm</label>
-    <select id="dorm_name">
-        <option value="Burton">
+    <label for="dorm-name">Select Dorm</label>
+    <select id="dorm-name">
+        <option value="ALLE">
+            Allen House
+        </option>
+        <option value="BLDG">
+            BLDG
+        </option>
+        <option value="BRKS">
+            Brooks House
+        </option>
+        <option value="BURT">
             Burton
         </option>
-        <option value="Sevy">
-            Sevy
+        <option value="CASS">
+            Cassat
         </option>
-        <option value="Watson">
+        <option value="CHAN">
+            CHAN
+        </option>
+        <option value="CLAD">
+            CLAD
+        </option>
+        <option value="CLWL">
+            CLWL
+        </option>
+        <option value="COLR">
+            COLR
+        </option>
+        <option value="DAVI">
+            Davis
+        </option>
+        <option value="DIXN">
+            Dixon House
+        </option>
+        <option value="DOWH">
+            Dow House
+        </option>
+        <option value="EUGS">
+            EUGS
+        </option>
+        <option value="EVAN">
+            Evans
+        </option>
+        <option value="FACL">
+            Faculty Club
+        </option>
+        <option value="FACX">
+            FACX
+        </option>
+        <option value="GFRT">
+            Geffert House
+        </option>
+        <option value="GHUE">
+            Good Hue
+        </option>
+        <option value="HILL">
+            Hill House
+        </option>
+        <option value="HNTH">
+            Huntington House
+        </option>
+        <option value="HUNT">
+            Hunt Cottage
+        </option>
+        <option value="MMRL">
+            Memorial
+        </option>
+        <option value="MUSS">
+            Musser
+        </option>
+        <option value="MYER">
+            Meyers
+        </option>
+        <option value="NASN">
+            Nason House
+        </option>
+        <option value="NFLD">
+            Nofo Option
+        </option>
+        <option value="NOUR">
+            Nourse
+        </option>
+        <option value="OWNS">
+            Owens
+        </option>
+        <option value="PAGE">
+            Page House
+        </option>
+        <option value="PAGW">
+            PAGW
+        </option>
+        <option value="PREN">
+            Prentice House
+        </option>
+        <option value="PRSH">
+            Parish House
+        </option>
+        <option value="RICE">
+            Rice Hosue
+        </option>
+        <option value="SCOT">
+            SCOT
+        </option>
+        <option value="SEVY">
+            Severance
+        </option>
+        <option value="STAD">
+            STAD
+        </option>
+        <option value="WATH">
+            WATH
+        </option>
+        <option value="WATS">
             Watson
         </option>
-    </select>
+        <option value="WILM">
+            WILM
+        </option>
+        <option value="WILS">
+            WILS
+        </option>
+    </select><br>
     <a id="goto" href="/">Go!</a>
 </div>
 
 <script type="text/javascript">
-$("#dorm_name").change(function() {
-    var dorm = $("#dorm_name").val();
+$("#dorm-name").change(function() {
+    var dorm = $("#dorm-name").val();
     $("#goto").attr("href", "/" + dorm);
 });
 $(document).ready(function(){
-    var dorm = $("#dorm_name").val();
+    var dorm = $("#dorm-name").val();
     $("#goto").attr("href", "/" + dorm);
 });
 </script>
