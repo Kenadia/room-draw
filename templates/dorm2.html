@@ -41,15 +41,15 @@ form {
 <script>
 
 var values = {{ data|tojson|safe }};
-var v2 = values.map(function(x) {
-    return x.draw_order;
-});
-values = v2;
 
-var n = 4, // number of layers
-    m = v2.length, // number of samples per layer
+var n = values.length, // number of layers
+    m = values[0].length, // number of samples per layer
     stack = d3.layout.stack(),
-    layers = stack(d3.range(n).map(function(x) { if(x){return v2;};return bumpLayer(m, .1); })),
+    layers = stack(values.map(function(l){
+              return d3.range(l.length).map(
+                function(i){
+                  return {x:i, y:l[i]};
+                });})),
     yGroupMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y; }); }),
     yStackMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); });
 

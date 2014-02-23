@@ -134,18 +134,29 @@
         <option value="WILS">
             WILS
         </option>
-    </select><br>
-    <a id="goto" href="/">Go!</a>
+    </select>
+    <a id="addto" class="dat-btn" href="#">add</a>
+    <br>
+    <a id="goto" class="dat-btn" href="/">Go!</a>
+    <br>
+    <ul id="the-dorms">
+    </ul>
 </div>
 
 <script type="text/javascript">
-$("#dorm-name").change(function() {
-    var dorm = $("#dorm-name").val();
-    $("#goto").attr("href", "/" + dorm);
+$("#addto").click(function(){
+    var li = $("<li>"+$("#dorm-name").val()+"</li>");
+    $("#the-dorms").append(li);
+    var dorms = [];
+    $("#the-dorms").children().each(function(x,y){
+        dorms.push($(y).text());
+    });
+    var str = dorms.join('+');
+    $("#goto").attr("href", "/+" + str);
 });
 $(document).ready(function(){
     var dorm = $("#dorm-name").val();
-    $("#goto").attr("href", "/" + dorm);
+    $("#goto").attr("href", "/+" + dorm);
 });
 </script>
 
