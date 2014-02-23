@@ -11,11 +11,7 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var values = {{ data|tojson|safe }};
-var v2 = values.map(function(x) {
-    return x.draw_number-1000;
-});
-values = v2;
+var values = {{ data }};
 
 // A formatter for counts.
 var formatCount = d3.format(",.0f");
@@ -25,7 +21,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 30},
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.linear()
-    .domain([0, d3.max(v2)])
+    .domain([0, 1])
     .range([0, width]);
 
 // Generate a histogram using twenty uniformly-spaced bins.
