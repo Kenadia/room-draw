@@ -13,7 +13,7 @@
 
 var values = {{ data|tojson|safe }};
 var v2 = values.map(function(x) {
-    return x.draw_number-1000;
+    return x.draw_order;
 });
 values = v2;
 
