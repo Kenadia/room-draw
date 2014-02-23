@@ -2,13 +2,21 @@
 <html>
   <head>
     {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,900" rel="stylesheet" type="text/css">
     <title>{% block title %}{% endblock %}</title>
     {% endblock %}
   </head>
   <body>
-    <div id="content">{% block content %}{% endblock %}</div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="content">{% block content %}{% endblock %}</div>
+          </div>
+      </div>
+    </div>
     <div id="footer">
       {% block footer %}
       &copy; Copyright 2014 by Matt Cotter and Ken Schiller.
