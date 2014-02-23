@@ -50,7 +50,7 @@ label[for="dorm-name"] {
     background-image: -webkit-linear-gradient(top, #ddf 0%, #69f 100%);
     /* W3C Markup, IE10 Release Preview */ 
     background-image: linear-gradient(to bottom, #ddf 0%, #69f 100%);
-    background: none;
+    /*background: none;*/
     border: 0 solid transparent;
 } #dorm-name:active, #dorm-name:focus{
     outline: 0;
