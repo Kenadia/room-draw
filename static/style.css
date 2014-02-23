@@ -70,7 +70,7 @@ label[for="dorm-name"]{
     outline: 0;
 }
 
-#goto, #goto:visited{
+.dat-btn, .dat-btn:visited{
     display: inline-block;
     margin: 0;
     margin-top: 20px;
@@ -81,7 +81,6 @@ label[for="dorm-name"]{
     border: 2px solid black;
     padding: 10px 80px;
     border-radius: 10px;
-
     /* IE10 Consumer Preview */ 
     background-image: -ms-linear-gradient(top, #555 0%, #333 100%);
     /* Mozilla Firefox */ 
@@ -96,9 +95,8 @@ label[for="dorm-name"]{
     background-image: linear-gradient(to bottom, #555 0%, #333 100%);
 }
 
-#goto:active{
+.dat-btn:active{
     color: #111;
-
     /* IE10 Consumer Preview */ 
     background-image: -ms-linear-gradient(top, #444 0%, #666 100%);
     /* Mozilla Firefox */ 
@@ -113,6 +111,11 @@ label[for="dorm-name"]{
     background-image: linear-gradient(to bottom, #444 0%, #666 100%);
 }
 
+#addto{
+    padding: 5px;
+    margin: 0
+}
+
 #footer{
     position: absolute;
     bottom: 20px;
@@ -123,4 +126,8 @@ label[for="dorm-name"]{
     color: #888;
     text-shadow: 1px 1px 2px #111, -1px -1px 2px #111,
                 -1px 1px 2px #111,  1px -1px 2px #111;
+}
+
+#the-dorms li{
+    list-style-type: none;
 }
