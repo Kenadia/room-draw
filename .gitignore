@@ -4,3 +4,5 @@ venv
 ._*
 .DS*
 *.db
+roomdraw.db
+migrations
