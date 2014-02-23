@@ -34,8 +34,14 @@ class Room(db.Model):
         return '<Room: %r hall>' % (self.hall)
 
 
-def getData(dorm, year):
-    results = Room.query.filter_by(hall=dorm[:4].upper(), year=year).all()
+def doseBins(*yolo):
+    bignum = max([max(x) for x in yolo])
+    
+    return yolo
+
+
+def getData(dorm):
+    results = Room.query.filter_by(hall=dorm[:4].upper()).all()
     data = [{
         'draw_order': room.draw_order,
         'room_number': room.room_number
@@ -50,8 +56,8 @@ def index():
 
 @app.route('/<dorm>')
 def histoDorm(dorm):
-    data = getData(dorm, 2003)
-    return render_template('dorm.html', data=data)
+    data = getData(dorm)
+    return render_template('dorm2.html', data=data)
 
 
 if __name__ == "__main__":
